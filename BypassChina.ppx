@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxifierProfile version="102" platform="Windows" product_id="0" product_minver="400">
+	<Options>
+		<Resolve>
+			<AutoModeDetection enabled="true" />
+			<ViaProxy enabled="false" />
+			<BlockNonATypes enabled="false" />
+			<ExclusionList OnlyFromListMode="false">
+                localhost;
+                %ComputerName%;
+                *.local;
+                
+            </ExclusionList>
+			<DnsUdpMode>0</DnsUdpMode>
+		</Resolve>
+		<Encryption mode="basic" />
+		<ConnectionLoopDetection enabled="true" resolve="true" />
+		<Udp mode="mode_bypass" />
+		<LeakPreventionMode enabled="false" />
+		<ProcessOtherUsers enabled="true" />
+		<ProcessServices enabled="true" />
+		<HandleDirectConnections enabled="false" />
+		<HttpProxiesSupport enabled="true" />
+	</Options>
+	<ProxyList>
+		<Proxy id="100" type="SOCKS5">
+			<Options>48</Options>
+			<Port>7891</Port>
+			<Address>127.0.0.1</Address>
+		</Proxy>
+	</ProxyList>
+	<ChainList />
+	<RuleList>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Targets>
+                localhost;
+                127.0.0.1;
+                0.0.0.0;
+                ::1;
+                %ComputerName%;
+                *.local;
+                127.0.0.0-127.255.255.255;
+                10.0.0.0-10.255.255.255;
+                192.168.0.0-192.168.255.255;
+				162.105.0.0-162.105.255.255;
+                100.64.0.0-100.127.255.255;
+
+            </Targets>
+			<Name>LAN</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Applications>
+                xray.exe;
+                v2ray-sn.exe;
+                clash*.exe;
+                ss-local;
+                simple-obfs;
+                obfs-local;
+                v2ray;
+                GoAgentX;
+                cow;
+                cow-*;
+                meow;
+                shadowsocks*;
+                Surge;
+                Mellow;
+                tcproute*;
+                tincd;
+
+            </Applications>
+			<Name>Proxy Client</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Targets>
+                clash.razord.top;
+
+            </Targets>
+			<Name>Proxy RESTful API</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Applications>
+                Wechat*exe;
+                searchapp.exe;
+                epic*.exe;
+                ssh.exe;
+                svchost.exe;
+                PulseVpn.exe;
+                eset*.exe;
+                matlab*exe;
+
+            </Applications>
+			<Name>Custom Apps</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Applications>
+                dig;
+                nslookup;
+                doh;
+                traceroute;
+                mtr;
+                mtr-packet;
+                besttrace;
+
+            </Applications>
+			<Name>Network Tools</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Applications>
+                Baidu*.exe
+
+            </Applications>
+			<Name>Baidu Direct</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Applications>
+                TeamViewer;
+                TIM;
+                WeChat;
+
+            </Applications>
+			<Name>Client Force Direct</Name>
+		</Rule>
+		<Rule enabled="false">
+			<Action type="Direct" />
+			<Targets>
+				*.bing.com;
+                *microsoft*;
+                *onedrive*;
+                *.azure.cn;
+                *.azure.com;
+                *.hotmail.com;
+                *.live.com;
+                *.live.net;
+                *.msn.com;
+                *.office.com;
+                *.office.net;
+                *.outlook.com;
+                *.sharepoint.com;
+                *.skype.com;
+                *.xbox.com;
+                *.xboxlive.com;
+
+            </Targets>
+			<Name>Microsoft</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Direct" />
+			<Targets>
+                *.gzblog.tech;
+                *.autodl.com;
+
+            </Targets>
+			<Name>GPU Server</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Proxy">100</Action>
+			<Applications>
+                vmnat.exe;
+
+            </Applications>
+			<Name>VMWare</Name>
+		</Rule>
+		<Rule enabled="false">
+			<Action type="Direct" />
+			<Targets>
+                *:*:*:*:*:*:*:*;
+                0:0:0:0:0:0:0:0-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff;
+            </Targets>
+			<Name>Fallback-Direct-IPv6</Name>
+		</Rule>
+		<Rule enabled="true">
+			<Action type="Proxy">100</Action>
+			<Name>Default</Name>
+		</Rule>
+	</RuleList>
+</ProxifierProfile>
